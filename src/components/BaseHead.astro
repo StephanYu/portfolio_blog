@@ -1,4 +1,6 @@
 ---
+import type AllArticles from "../storyblok/AllArticles.astro";
+
 // import siteConfig from "../data/site-config";
 // import "../styles/global.css";
 
@@ -15,18 +17,15 @@ const {
   pageType = "website",
 } = Astro.props as BaseHeadProps;
 
-// This is temporary, until we can get the site config from the Astro object
-const site = "https://www.github.com"
-
 const title = "title";
 
 const resolvedImage = image?.src
   ? {
-      src: new URL(image.src, site).toString(),
+      src: new URL(image.src, Astro.site).toString(),
       alt: image.alt,
     }
   : undefined;
-const canonicalURL = new URL(Astro.request.url, site);
+const canonicalURL = new URL(Astro.request.url, Astro.site);
 
 /**
  * Enforce some standard canonical URL formatting across the site.

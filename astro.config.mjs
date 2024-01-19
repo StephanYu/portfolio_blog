@@ -7,7 +7,7 @@ import basicSsl from '@vitejs/plugin-basic-ssl'
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 export default defineConfig({
-  site: "https://www.github.com",
+  site: "https://portfolio-blog-snowy-delta.vercel.app/",
   output: "server",
   adapter: vercel(),
   integrations: [
