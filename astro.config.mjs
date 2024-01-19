@@ -8,7 +8,6 @@ const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 export default defineConfig({
   site: "https://portfolio-blog-snowy-delta.vercel.app/",
-  output: "server",
   adapter: vercel(),
   integrations: [
     storyblok({
@@ -16,9 +15,7 @@ export default defineConfig({
       apiOptions: {
         region: '',
       },
-      bridge: {
-        customParent: 'https://app.storyblok.com',
-      },
+      bridge: env.STORYBLOK_IS_PREVIEW === 'yes',
       components: {
         page: 'storyblok/Page',
         feature: 'storyblok/Feature',
@@ -34,6 +31,15 @@ export default defineConfig({
     }),
     tailwind(),
   ],
+  output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'static',
+  ...(env.STORYBLOK_ENV === 'development' && {
+    vite: {
+      plugins: [basicSsl()],
+      server: {
+        https: true
+      }
+    }
+  }),
   vite: {
     plugins: [basicSsl()],
     server: {
