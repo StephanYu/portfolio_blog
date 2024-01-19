@@ -20,13 +20,12 @@ This project is a portfolio and blog site built using Storyblok as a headless CM
 
 1. Clone the repository
 
-`git clone https://github.com/<yourusername>/<your-repo-name>.git`
+`git clone git@github.com:StephanYu/portfolio_blog.git`
 
-Please replace <yourusername> and <your-repo-name> with your actual GitHub username and repository name.
 
 2. Navigate into the directory
 
-`cd your-repo-name`
+`cd portfolio_blog`
 
 3. Install the dependencies
 
