@@ -1,0 +1,20 @@
+---
+import Navbar from "../components/Navbar.astro";
+import BaseHead from "../components/BaseHead.astro";
+
+const { ...head } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <!-- <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <title>Portfolio</title> -->
+    <BaseHead {...head} />
+  </head>
+  <body class="container mx-auto">
+    <Navbar class="bg-slate-50 border-b border-slate-100" />
+    <slot />
+  </body>
+</html>
