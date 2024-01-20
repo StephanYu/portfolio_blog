@@ -1,43 +1,28 @@
 ---
-import { useStoryblokApi } from '@storyblok/astro'
-import ThemeSwitcher from './ThemeSwitcher.astro'
+import ThemeSwitcher from './ThemeSwitcher.astro';
+import Menu from './Menu.jsx';
+import { useStoryblokApi } from "@storyblok/astro";
 
-const storyblokApi = useStoryblokApi()
+const storyblokApi = useStoryblokApi();
+
 const { data } = await storyblokApi.get('cdn/stories/config', {
   version: 'draft',
   resolve_links: 'url',
-})
-const navbarMenu = data?.story?.content?.navbar_menu
+});
+
+const navbarMenu = data?.story?.content?.navbar_menu || [];
 ---
 
 <header
-  class="container w-full flex items-center justify-between h-[80px] sm:h-[123px] dark:bg-gray"
+  class="container w-full flex items-center justify-between px-4 py-[19px] h-[80px] sm:h-[123px] border-b border-zinc-800 bg-light dark:bg-gray"
 >
   <a
     class="cursor-pointer flex items-center justify-center"
     href="/"
     ><img src="/default-logo.svg" alt="default-logo">
   </a>
-
-  <nav>
-    <ul class="flex space-x-8 dark:text-light text-lg font-bold">
-      {
-        navbarMenu.map((menu) => {
-          console.log("menu", menu)
-          return (
-            <li>
-              <a href={`/${menu.link.cached_url}`} class="hover:text-[#50b0ae]">
-                {menu.name}
-              </a>
-            </li>
-          )
-        })
-      }
-      <li>
-        <ThemeSwitcher class="dark:text-light rounded-lg p-4 ml-2 bg-slate-100 dark:bg-[#202020]" />
-      </li>
-    </ul>
-  </nav>
+  <div class="flex items-center justify-between gap-4 relative">
+    <Menu navbarMenu={navbarMenu} client:load />
+    <ThemeSwitcher class="dark:text-light rounded-full h-[30px] w-[30px] ml-2 bg-slate-100 dark:bg-dark-gray flex items-center justify-center" />
+  </div>
 </header>
-
-

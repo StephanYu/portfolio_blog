@@ -4,6 +4,7 @@ import { loadEnv } from 'vite'
 import vercel from "@astrojs/vercel/serverless";
 import tailwind from '@astrojs/tailwind'
 import basicSsl from '@vitejs/plugin-basic-ssl'
+import react from '@astrojs/react';
 const env = loadEnv('', process.cwd(), 'STORYBLOK')
 
 export default defineConfig({
@@ -30,6 +31,7 @@ export default defineConfig({
       },
     }),
     tailwind(),
+    react(),
   ],
   output: env.STORYBLOK_IS_PREVIEW === 'yes' ? 'server' : 'static',
   ...(env.STORYBLOK_ENV === 'development' && {
