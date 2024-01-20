@@ -1,0 +1,12 @@
+---
+const { headlines } = Astro.props;
+---
+
+<section class="self-stretch-flex h-[296px] items-start gap-4">
+  <div class="self-stretch text-[42px] leading-[46px] text-style">
+    {headlines.headline}
+  </div>
+  <div class="self-stretch text-xl leading-7 text-style">
+    {headlines.subheadline}
+  </div>
+</section>

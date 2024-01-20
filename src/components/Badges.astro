@@ -1,0 +1,15 @@
+---
+import { badges } from "../badgeData.js";
+---
+
+<section class="w-full flex items-start justify-start gap-3">
+  {
+    badges.map((badge) => (
+      <div class="px-2.5 py-0.5 rounded-[100px] border border-zinc-800 justify-center items-center gap-2.5 flex text-center text-zinc-800 text-xs font-semibold font-['Inter'] leading-tight">
+        <a href={badge.link} target="_blank" rel="noopener noreferrer">
+          {badge.title}
+        </a>
+      </div>
+    ))
+  }
+</section>
