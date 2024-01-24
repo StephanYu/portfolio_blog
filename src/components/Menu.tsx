@@ -17,7 +17,7 @@ const Menu = ({ navbarMenu }) => {
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-[var(--black-a9)]" />
-        <Dialog.Content className="bg-white z-10 fixed inset-0 w-full h-full p-6 focus:outline-none px-4">
+        <Dialog.Content className="bg-white z-10 fixed inset-0 w-full h-full p-6 lg:px-20 lg:py-6 focus:outline-none px-4">
          <div className="flex items-center justify-start mb-[72px]">
             <a
               className="cursor-pointer flex items-center justify-center w-8 h-8"
@@ -48,7 +48,7 @@ const Menu = ({ navbarMenu }) => {
           <Dialog.Close asChild>
             <button
               type="button"
-              className="font-inherit inline-flex items-center justify-center absolute top-6 right-4"
+              className="font-inherit inline-flex items-center justify-center absolute top-6 right-4 lg:right-20"
               aria-label="Close"
               onClick={handleClose}
             >
