@@ -24,6 +24,8 @@ export default defineConfig({
         teaser: "storyblok/Teaser",
         config: "storyblok/Config",
         hero: "storyblok/Hero",
+        cta: "storyblok/Cta",
+        footer: "storyblok/Footer",
         article: "storyblok/Article",
         "featured-articles": "storyblok/FeaturedArticles",
         "all-articles": "storyblok/AllArticles",

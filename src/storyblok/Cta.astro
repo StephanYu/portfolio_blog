@@ -1,0 +1,31 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+const { blok } = Astro.props;
+---
+
+<article
+  {...storyblokEditable(blok)}
+  class="container mx-auto self-stretch-flex w-[375px] gap-2 pt-10"
+>
+  <div class="bg-zinc-800 rounded-t-3xl px-4 py-[72px]">
+    <div class="flex flex-col items-center justify-center gap-10 h-[218px]">
+      <div class="text-center text-white">
+        <div class="text-lg font-semibold leading-[30px]">
+          {blok.top_headline}
+        </div>
+        <div class="text-[42px] font-semibold leading-[46px]">
+          {blok.main_headline}
+        </div>
+      </div>
+
+      <div
+        class="w-[244px] h-14 px-[50px] border-2 py-3 border-white rounded-[39px] flex items-center justify-center gap-2"
+      >
+        <div class="text-center text-white text-lg font-semibold leading-loose">
+          {blok.button_title}
+        </div>
+        <img class="w-6 h-6" src="/arrow-up-right.svg" />
+      </div>
+    </div>
+  </div>
+</article>
