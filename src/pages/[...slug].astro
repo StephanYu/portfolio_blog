@@ -30,7 +30,10 @@ const { data } = await storyblokApi.get(
   `cdn/stories/${slug === undefined ? "home" : slug}`,
   {
     version: "draft",
-    resolve_relations: ["featured-articles.articles"],
+    resolve_relations: [
+      "featured-articles.articles",
+      "featured-case-studies.casestudies",
+    ],
   }
 );
 

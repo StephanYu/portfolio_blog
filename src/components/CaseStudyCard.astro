@@ -1,0 +1,51 @@
+---
+const { caseStudy } = Astro.props;
+---
+
+<article
+  class="w-full pb-10 bg-gray-100 rounded-3xl border-zinc-800 flex-col justify-start items-start gap-6 inline-flex"
+>
+  <img
+    class="w-full h-[350px]"
+    src={`${caseStudy.image.filename}/m/343x350`}
+    alt={caseStudy.image.alt}
+  />
+  <div class="self-stretch px-10 flex flex-col justify-start items-start gap-4">
+    <div class="self-stretch flex justify-start items-start gap-2">
+      <div
+        class="text-zinc-800 text-[28px] font-semibold font-['Inter'] leading-[34px]"
+      >
+        {caseStudy.title}
+      </div>
+    </div>
+    <div class="self-stretch flex justify-start items-center gap-6">
+      <div
+        class="px-2.5 py-0.5 opacity-80 rounded-[100px] border border-zinc-800 flex justify-center items-center gap-2.5"
+      >
+        <div
+          class="text-center text-zinc-800 text-xs font-semibold font-['Inter'] leading-tight"
+        >
+          {caseStudy.badge1}
+        </div>
+      </div>
+      <div
+        class="px-2.5 py-0.5 opacity-80 rounded-[100px] border border-zinc-800 flex justify-center items-center gap-2.5"
+      >
+        <div
+          class="text-center text-zinc-800 text-xs font-semibold font-['Inter'] leading-tight"
+        >
+          {caseStudy.badge2}
+        </div>
+      </div>
+      <div
+        class="px-2.5 py-0.5 opacity-80 rounded-[100px] border border-zinc-800 flex justify-center items-center gap-2.5"
+      >
+        <div
+          class="text-center text-zinc-800 text-xs font-semibold font-['Inter'] leading-tight"
+        >
+          {caseStudy.badge3}
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

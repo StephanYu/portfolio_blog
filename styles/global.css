@@ -11,5 +11,5 @@
 }
 
 .text-style {
-  @apply text-zinc-800 font-semibold font-['Inter'];
+  @apply text-dark font-semibold font-['Inter'];
 }

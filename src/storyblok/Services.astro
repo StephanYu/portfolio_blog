@@ -1,0 +1,28 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import ServiceList from "../components/ServiceList";
+import { extractServicesFromBlok } from "../../utils";
+const { blok } = Astro.props;
+const services = extractServicesFromBlok(blok);
+---
+
+<article
+  {...storyblokEditable(blok)}
+  class="container mx-auto self-stretch-flex w-[375px] gap-2 py-10"
+>
+  <div class="self-stretch flex-col justify-start items-center gap-6 flex">
+    <section class="self-stretch justify-start items-center gap-2 inline-flex">
+      <img
+        src="/corner-right.svg"
+        alt="right-arrow-icon"
+        class="w-6 h-6 relative"
+      />
+      <div
+        class="grow shrink basis-0 text-zinc-800 text-base font-normal uppercase tracking-[5px] font-['Inter'] leading-relaxed"
+      >
+        {blok.headline}
+      </div>
+    </section>
+    <ServiceList services={services} client:load />
+  </div>
+</article>

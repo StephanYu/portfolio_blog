@@ -1,9 +1,9 @@
 ---
-import ArticleCard from "../components/ArticleCard.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
 import { storyblokEditable } from "@storyblok/astro";
 
 const { blok } = Astro.props;
-let articles = blok.articles;
+let caseStudies = blok.casestudies;
 ---
 
 <article
@@ -28,16 +28,23 @@ let articles = blok.articles;
   >
     <ul class="w-full flex-col justify-center items-center gap-8 inline-flex">
       {
-        articles?.length &&
-          articles.map((article) => {
-            article.content.slug = article.slug;
+        caseStudies?.length &&
+          caseStudies.map((caseStudy) => {
+            caseStudy.content.slug = caseStudy.slug;
             return (
               <li>
-                <ArticleCard article={article.content} />
+                <CaseStudyCard caseStudy={caseStudy.content} />
               </li>
             );
           })
       }
     </ul>
   </div>
+
+  <a
+    href="/projects"
+    class="self-stretch px-5 py-2.5 rounded-[39px] border-2 border-neutral-900 justify-center items-center gap-1 inline-flex text-center text-neutral-900 text-sm font-semibold font-['Inter'] leading-normal"
+  >
+    All Case Studies
+  </a>
 </article>
