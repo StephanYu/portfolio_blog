@@ -13,15 +13,17 @@ const navbarMenu = data?.story?.content?.navbar_menu || [];
 ---
 
 <header
-  class="w-full flex items-center justify-between px-4 py-[19px] lg:h-[80px] lg:px-20 lg:py-6 h-[68px] border-b border-zinc-800 bg-light dark:bg-gray"
+  class="w-full px-4 py-[19px] lg:h-[80px] lg:px-20 lg:py-6 h-[68px] border-b border-zinc-800 bg-light dark:bg-gray"
 >
-  <a class="cursor-pointer flex items-center justify-center" href="/"
-    ><img src="/default-logo.svg" alt="default-logo" />
-  </a>
-  <div class="flex items-center justify-between gap-4 relative">
-    <Menu navbarMenu={navbarMenu} client:load />
-    <ThemeSwitcher
-      class="dark:text-light rounded-full h-[30px] w-[30px] ml-2 bg-slate-100 dark:bg-dark-gray flex items-center justify-center"
-    />
+  <div class="max-w-[1280px] mx-auto flex items-center justify-between">
+    <a class="cursor-pointer flex items-center justify-center" href="/"
+      ><img src="/default-logo.svg" alt="default-logo" />
+    </a>
+    <div class="flex items-center justify-between gap-4 relative">
+      <Menu navbarMenu={navbarMenu} client:load />
+      <ThemeSwitcher
+        class="dark:text-light rounded-full h-[30px] w-[30px] ml-2 bg-slate-100 dark:bg-dark-gray flex items-center justify-center"
+      />
+    </div>
   </div>
 </header>
