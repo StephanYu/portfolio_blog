@@ -1,17 +1,17 @@
 ---
 import { storyblokEditable, useStoryblokApi } from "@storyblok/astro";
-import ArticleCard from "../components/ArticleCard.astro";
+import CaseStudyCard from "../components/CaseStudyCard.astro";
 
 const { blok } = Astro.props;
 
 const storyblokApi = useStoryblokApi();
 const { data } = await storyblokApi.get(`cdn/stories`, {
   version: "draft",
-  starts_with: "articles/",
+  starts_with: "casestudies/",
   is_startpage: false,
 });
 
-const articles = data.stories;
+const casestudies = data.stories;
 ---
 
 <section
@@ -19,15 +19,15 @@ const articles = data.stories;
   class="max-w-[1280px] mx-auto self-stretch-flex px-4 lg:px-0 gap-2 lg:gap-8 pb-10"
 >
   <ul
-    class="w-full inline-flex flex-col lg:grid lg:grid-cols-3 justify-center items-center gap-6 lg:gap-8"
+    class="w-full inline-flex flex-col lg:grid lg:grid-cols-2 justify-center items-center gap-6 lg:gap-8"
   >
     {
-      articles?.length &&
-        articles.map((article) => {
-          article.content.slug = article.slug;
+      casestudies?.length &&
+        casestudies.map((item) => {
+          item.content.slug = item.slug;
           return (
             <li>
-              <ArticleCard article={article.content} />
+              <CaseStudyCard caseStudy={item.content} />
             </li>
           );
         })
@@ -41,7 +41,7 @@ const articles = data.stories;
     <div
       class="text-center text-neutral-900 text-sm font-semibold leading-normal"
     >
-      Next
+      All Case Studies
     </div>
     <img src="/arrow-right.svg" alt="arrow-right" />
   </a>

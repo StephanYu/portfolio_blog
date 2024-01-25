@@ -1,0 +1,24 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<div
+  {...storyblokEditable(blok)}
+  class="max-w-[1280px] mx-auto px-4 lg:px-0 py-10 lg:py-20 bg-white flex flex-col items-center justify-start"
+>
+  <div class="w-full h-full flex flex-col items-start justify-start gap-4">
+    <div
+      class="lg:w-[733px] text-neutral-900 w-full text-[42px] lg:text-[84px] font-semibold leading-[46px] lg:leading-[89px]"
+    >
+      {blok.headline}
+    </div>
+
+    <div
+      class="lg:w-[527px] text-gray-500 text-base lg:text-lg font-normal leading-relaxed lg:leading-[30px]"
+    >
+      {blok.description}
+    </div>
+  </div>
+</div>
