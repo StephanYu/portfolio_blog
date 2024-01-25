@@ -8,7 +8,7 @@ let articles = blok.articles;
 
 <article
   {...storyblokEditable(blok)}
-  class="container mx-auto self-stretch-flex w-[375px] gap-2 py-10"
+  class="self-stretch-flex w-full px-4 lg:px-20 gap-2 py-10"
 >
   <section class="self-stretch justify-start items-center gap-2 inline-flex">
     <img
@@ -26,7 +26,9 @@ let articles = blok.articles;
   <div
     class="w-full py-8 bg-white flex-col justify-start items-center inline-flex"
   >
-    <ul class="w-full flex-col justify-center items-center gap-8 inline-flex">
+    <ul
+      class="w-full flex-col lg:grid lg:grid-cols-3 justify-center items-center gap-8 inline-flex"
+    >
       {
         articles?.length &&
           articles.map((article) => {

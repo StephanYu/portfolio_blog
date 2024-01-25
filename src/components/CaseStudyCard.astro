@@ -3,18 +3,17 @@ const { caseStudy } = Astro.props;
 ---
 
 <article
-  class="w-full pb-10 bg-gray-100 rounded-3xl border-zinc-800 flex-col justify-start items-start gap-6 inline-flex"
+  class="w-full lg:h-[628px] lg:w-[624px] pt-5 pb-10 bg-gray-100 rounded-3xl border-zinc-800 flex-col justify-center items-center gap-6 inline-flex"
 >
   <img
-    class="w-full h-[350px]"
-    src={`${caseStudy.image.filename}/m/343x350`}
+    class="w-[343px] h-[350px] lg:w-[624] lg:h-[490px] object-cover"
+    src={`${caseStudy.image.filename}`}
     alt={caseStudy.image.alt}
   />
+
   <div class="self-stretch px-10 flex flex-col justify-start items-start gap-4">
     <div class="self-stretch flex justify-start items-start gap-2">
-      <div
-        class="text-zinc-800 text-[28px] font-semibold font-['Inter'] leading-[34px]"
-      >
+      <div class="text-zinc-800 text-[28px] font-semibold leading-[34px]">
         {caseStudy.title}
       </div>
     </div>
