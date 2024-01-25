@@ -1,25 +1,22 @@
 ---
 import "../../styles/global.css";
 import { storyblokEditable } from "@storyblok/astro";
-import Badges from "../components/Badges.astro";
+
 import HeroImages from "../components/HeroImages.astro";
 import { getImagesFromBlok } from "../../utils";
 import Headlines from "../components/Headlines.astro";
 
 const { blok } = Astro.props;
-const dynamicHeroClass = blok.layout === "constrained" && "container mx-auto";
 const headlines = { headline: blok.headline, subheadline: blok.subheadline };
 const bgImages = getImagesFromBlok(blok);
 ---
 
 <article
   {...storyblokEditable(blok)}
-  class={`${dynamicHeroClass} self-stretch-flex w-[375px] gap-2 pb-10`}
+  class="self-stretch-flex w-full px-4 lg:px-20 gap-2 pb-10"
 >
-  <section class="self-stretch-flex pt-8 gap-6">
-    <Headlines headlines={headlines}>
-      <Badges />
-    </Headlines>
+  <section class="self-stretch-flex pt-8 lg:pt-0 gap-6 lg:gap-0">
+    <Headlines headlines={headlines} />
 
     <HeroImages images={bgImages} />
   </section>

@@ -4,46 +4,46 @@ const { images } = Astro.props;
 
 <section class="self-stretch-flex items-start gap-2">
   <img
-    class="w-full h-16 relative rounded-[20px] object-cover"
+    class="w-full h-16 lg:h-[140px] relative rounded-[20px] lg:rounded-[40px] object-cover"
     src={images.bgImg1.filename}
     alt={images.bgImg1.alt}
   />
 
-  <div class="w-full flex gap-[4.29px] h-16">
-    <div class="w-[43px]">
+  <div class="w-full flex gap-[4.29px] h-16 lg:h-[140px]">
+    <div class="w-[43px] lg:w-[162px]">
       <img
-        class="w-full h-16 relative rounded-[10.72px] object-cover"
+        class="w-full h-full relative rounded-[10.72px] lg:rounded-[40px] object-cover"
         src={images.bgImg2.filename}
         alt={images.bgImg2.alt}
       />
     </div>
     <div class="flex-grow">
       <img
-        class="w-full h-full relative object-cover rounded-[20px]"
+        class="w-full h-full relative object-cover rounded-[20px] lg:rounded-[40px]"
         src={images.bgImg3.filename}
         alt={images.bgImg3.alt}
       />
     </div>
   </div>
 
-  <div class="w-full flex gap-[4.29px] h-16">
-    <div class="w-[213.30px]">
+  <div class="w-full flex gap-[4.29px] h-16 lg:h-[140px]">
+    <div class="w-[213.30px] lg:w-[796px]">
       <img
-        class="w-full h-full object-cover relative rounded-[20px]"
+        class="w-full h-full object-cover relative rounded-[20px] lg:rounded-[40px]"
         src={images.bgImg4.filename}
         alt={images.bgImg4.alt}
       />
     </div>
     <div class="flex-grow">
       <img
-        class="w-full h-full object-cover relative rounded-[20px]"
+        class="w-full h-full object-cover relative rounded-[20px] lg:rounded-[40px]"
         src={images.bgImg5.filename}
         alt={images.bgImg5.alt}
       />
     </div>
   </div>
   <img
-    class="w-full h-16 object-cover relative rounded-[20px]"
+    class="w-full h-16 lg:h-[140px] object-cover relative rounded-[20px] lg:rounded-[40px]"
     src={images.bgImg6.filename}
     alt={images.bgImg6.alt}
   />
