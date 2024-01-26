@@ -4,18 +4,109 @@ import { storyblokEditable } from "@storyblok/astro";
 const { blok } = Astro.props;
 ---
 
-<article {...storyblokEditable(blok)} class="">
-  <img
-    class="w-full h-[360px] object-cover"
-    alt={blok.image.alt}
-    src={`${blok.image.filename}/m/1600x0`}
-  />
-  <div class="container mx-auto mb-12">
-    <h1 class="text-6xl text-[#50b0ae] font-bold mt-12 mb-4">
-      {blok.title}
-    </h1>
-    <p>{blok.badge1}</p>
-    <p>{blok.badge2}</p>
-    <p>{blok.badge3}</p>
+<article
+  {...storyblokEditable(blok)}
+  class="max-w-[1280px] mx-auto py-20 lg:px-0 bg-white flex flex-col items-center gap-2 px-4"
+>
+  <div class="w-full flex justify-start items-center">
+    <a href="/projects" class="flex gap-1">
+      <img
+        src="/corner-right.svg"
+        alt="right-arrow-icon"
+        class="w-6 h-6 relative"
+      />
+      <div
+        class="text-zinc-800 text-base font-semibold font-['Inter'] leading-7"
+      >
+        All case studies
+      </div>
+    </a>
   </div>
+
+  <header
+    class="flex flex-col lg:flex-row justify-between items-start gap-4 lg:pb-20"
+  >
+    <section class="w-full lg:w-1/2 flex flex-col items-start gap-4">
+      <div class="text-neutral-900 text-[84px] font-semibold leading-[89px]">
+        {blok.title}
+      </div>
+      <div class="text-gray-500 text-lg font-normal leading-[30px]">
+        {blok.description}
+      </div>
+    </section>
+
+    <section
+      class="w-full lg:w-1/2 flex items-center justify-center lg:justify-end gap-4"
+    >
+      <div class="min-w-[343px]">
+        <div
+          class="flex justify-between items-center border-b border-neutral-200 py-[15px] w-full"
+        >
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            Client:
+          </div>
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            {blok.client}
+          </div>
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-neutral-200 py-[15px] w-full"
+        >
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            Role:
+          </div>
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            {blok.role}
+          </div>
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-neutral-200 py-[15px] w-full"
+        >
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            Date:
+          </div>
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            {blok.date}
+          </div>
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-neutral-200 py-[15px] w-full"
+        >
+          <div class="text-zinc-800 text-base font-normal leading-relaxed">
+            Preview
+          </div>
+          <div class="text-blue-600 text-base font-semibold leading-relaxed">
+            {blok.preview.url}
+          </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main class="bg-white flex flex-col items-center gap-6 lg:gap-14">
+    <img class="w-full rounded-[40px]" src={blok.image1.filename} />
+    <div class="w-full flex flex-col lg:flex-row items-start gap-6 lg:gap-12">
+      <div
+        class="lg:w-1/2 text-neutral-900 text-[34px] font-semibold font-['Inter'] leading-10"
+      >
+        {blok.emphasised_desc}
+      </div>
+      <div
+        class="lg:w-1/2 text-gray-500 text-lg font-normal font-['Inter'] leading-[30px]"
+      >
+        {blok.detailed_desc}
+      </div>
+    </div>
+  </main>
+
+  <section class="w-full py-20 bg-white grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <img
+      class="w-full rounded-[40px] lg:col-span-2"
+      src={blok.image2.filename}
+    />
+    <img class="w-full rounded-[40px]" src={blok.image3.filename} />
+    <img class="w-full rounded-[40px]" src={blok.image4.filename} />
+  </section>
+
+  <!-- TODO: Add CTA, Footer -->
 </article>
