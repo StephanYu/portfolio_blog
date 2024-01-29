@@ -1,0 +1,278 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const isValidEmail = (email) => {
+  const re = /\S+@\S+\.\S+/;
+  return re.test(email);
+};
+
+const saveUser = async ({ firstName, lastName, email, message }) => {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ firstName, lastName, email, message }),
+  });
+  if (!response.ok) {
+    throw new Error("Something went wrong");
+  }
+};
+
+const errors = { firstName: "", lastName: "", email: "", message: "" };
+
+if (Astro.request.method === "POST") {
+  try {
+    const data = await Astro.request.formData();
+    const firstName = data.get("firstName");
+    const lastName = data.get("lastName");
+    const email = data.get("email");
+    const message = data.get("message");
+
+    if (typeof firstName !== "string" || firstName.length < 1) {
+      errors.firstName += "Please enter a firstName. ";
+    }
+    if (typeof lastName !== "string" || lastName.length < 1) {
+      errors.lastName += "Please enter a lastName. ";
+    }
+    if (typeof email !== "string" || !isValidEmail(email)) {
+      errors.email += "Email is not valid. ";
+    }
+    if (typeof message !== "string" || message.length < 6) {
+      errors.message += "message must be at least 6 characters. ";
+    }
+    const hasErrors = Object.values(errors).some((msg) => msg);
+    if (!hasErrors) {
+      await saveUser({ firstName, lastName, email, message });
+      return Astro.redirect("/login");
+    }
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(error.message);
+    }
+  }
+}
+---
+
+<BaseLayout>
+  <article
+    class="w-full lg:pt-20 lg:py-10 lg:px-20 px-4 py-6 bg-white flex flex-col items-center gap-6"
+  >
+    <section
+      class="w-full py-16 bg-zinc-800 rounded-[32px] flex flex-col lg:flex-row items-center gap-8 pb-6"
+    >
+      <div class="flex flex-col items-center justify-start lg:p-24 gap-4">
+        <div
+          class="text-[42px] lg:text-[84px] lg:leading-[89px] text-white font-semibold leading-[46px] text-center"
+        >
+          Have an idea? Let’s connect.
+        </div>
+        <div
+          class="leading-loose text-center text-stone-300 lg:text-[28px] font-semibold px-4"
+        >
+          I'm a passionate designer who thrives on the dance between creativity
+          and functionality.
+        </div>
+      </div>
+
+      <div
+        class="w-full lg:px-14 lg:py-24 px-4 bg-zinc-800 border-l border-neutral-600 flex flex-col items-center gap-10"
+      >
+        <div class="h-[207px] flex flex-col items-center gap-4">
+          <img class="h-[123px] rounded-full" src="/default-profile.jpg" />
+          <div class="h-[68px] flex flex-col items-center gap-2">
+            <div
+              class="text-[28px] text-white font-semibold leading-[34px] text-center"
+            >
+              Carl Sagan
+            </div>
+            <div
+              class="text-base text-stone-300 font-normal leading-relaxed text-center"
+            >
+              Product designer based in Florida.
+            </div>
+          </div>
+        </div>
+        <div class="w-full flex flex-col items-center gap-6">
+          <!-- Following sections are similar and repeated -->
+          <div
+            class="w-full h-12 py-4 border-b border-neutral-600 flex justify-between items-center"
+          >
+            <div class="text-white text-base font-semibold">Follow</div>
+          </div>
+          <div
+            class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+          >
+            <img class="w-6 h-6" src="/link.svg" />
+            <div class="text-white text-base font-normal">Twitter</div>
+          </div>
+          <div
+            class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+          >
+            <img class="w-6 h-6" src="/link.svg" />
+            <div class="text-white text-base font-normal">Github</div>
+          </div>
+          <div
+            class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+          >
+            <img class="w-6 h-6" src="/link.svg" />
+            <div class="text-white text-base font-normal">Linkedin</div>
+          </div>
+        </div>
+        <div class="h-[94px] flex flex-col justify-center items-center gap-4">
+          <div
+            class="px-7 py-3 bg-white rounded-[39px] flex justify-center items-center gap-2"
+          >
+            <img class="w-6 h-6" src="/calendar.svg" />
+            <div class="text-lg text-zinc-800 font-semibold">
+              Schedule a call
+            </div>
+          </div>
+          <div class="text-center">
+            <span class="text-stone-300 text-sm font-normal">Meetings via</span>
+            <span class="text-stone-300 text-sm font-semibold">Calendly</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section
+      class="w-full lg:px-0 px-4 py-16 bg-gray-100 rounded-[32px] flex flex-col justify-center items-start gap-2"
+    >
+      <form
+        method="POST"
+        class="flex flex-col lg:w-[688px] w-full mx-auto items-center gap-10"
+      >
+        <div class="w-full flex flex-col items-center gap-2">
+          <div class="text-center text-neutral-900 text-base font-semibold">
+            Prefer text instead?
+          </div>
+          <div class="text-center text-neutral-900 text-[28px] font-semibold">
+            Send me a message, I’ll reply within 12 hours
+          </div>
+        </div>
+        <div class="w-full flex flex-col items-center gap-12">
+          <div class="w-full flex flex-col items-start gap-8">
+            <label
+              class="w-full border-b border-neutral-600 flex flex-col gap-2"
+            >
+              <span class="text-neutral-400 text-base font-normal"
+                >First name</span
+              >
+              <input
+                type="text"
+                name="firstName"
+                required
+                class="w-full h-[52px] text-neutral-400"
+              />
+            </label>
+            <label
+              class="w-full border-b border-neutral-600 flex flex-col gap-2"
+            >
+              <span class="text-neutral-400 text-base font-normal"
+                >Last name</span
+              >
+              <input
+                type="text"
+                name="lastName"
+                required
+                class="w-full h-[52px] text-neutral-400"
+              />
+            </label>
+            <label
+              class="w-full border-b border-neutral-600 flex flex-col gap-2"
+            >
+              <span class="text-neutral-400 text-base font-normal"
+                >Enter your email</span
+              >
+              <input
+                type="email"
+                name="email"
+                required
+                class="w-full h-[52px] text-neutral-400"
+              />
+            </label>
+            <label
+              class="w-full border-b border-neutral-600 flex flex-col gap-2"
+            >
+              <span class="text-neutral-400 text-base font-normal">Message</span
+              >
+              <textarea
+                name="message"
+                required
+                minlength="6"
+                class="w-full h-[150px] text-neutral-400"></textarea>
+            </label>
+          </div>
+          <button
+            type="submit"
+            class="w-full px-7 py-3 bg-zinc-800 rounded-[39px] text-center text-white text-lg font-semibold"
+          >
+            Send message
+          </button>
+          <div class="w-full text-center">
+            <span class="text-neutral-600 text-sm font-normal"
+              >By contacting us, you agree to my
+            </span>
+            <span class="text-neutral-600 text-sm font-semibold"
+              >Terms and Conditions</span
+            >.
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="w-full h-[212px] pb-20 bg-white flex-col justify-start items-center inline-flex"
+    >
+      <div
+        class="w-full h-[132px] bg-zinc-800 rounded-3xl flex-col justify-center items-center flex"
+      >
+        <div class="flex-col justify-start items-center gap-6 flex">
+          <div class="justify-center items-start gap-8 inline-flex">
+            <div class="justify-start items-start gap-2.5 flex">
+              <div
+                class="text-center text-white text-sm font-semibold font-['Inter'] leading-snug"
+              >
+                Home
+              </div>
+            </div>
+            <div class="justify-start items-start gap-2.5 flex">
+              <div
+                class="text-center text-white text-sm font-semibold font-['Inter'] leading-snug"
+              >
+                Case studies
+              </div>
+            </div>
+            <div class="justify-start items-start gap-2.5 flex">
+              <div
+                class="text-center text-white text-sm font-semibold font-['Inter'] leading-snug"
+              >
+                About
+              </div>
+            </div>
+            <div class="justify-start items-start gap-2.5 flex">
+              <div
+                class="text-center text-white text-sm font-semibold font-['Inter'] leading-snug"
+              >
+                Contact
+              </div>
+            </div>
+            <div class="justify-start items-start gap-2.5 flex">
+              <div
+                class="text-center text-white text-sm font-semibold font-['Inter'] leading-snug"
+              >
+                Terms
+              </div>
+            </div>
+          </div>
+          <div
+            class="text-center text-neutral-200 text-sm font-normal font-['Inter'] leading-snug"
+          >
+            © 2088 Nayzak Design
+          </div>
+        </div>
+      </div>
+    </footer>
+  </article>
+</BaseLayout>

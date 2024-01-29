@@ -1,0 +1,92 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+import ContactForm from "../components/ContactForm.astro";
+
+const { blok } = Astro.props;
+---
+
+<article
+  {...storyblokEditable(blok)}
+  class="max-w-[1280px] mx-auto lg:pt-20 lg:py-10 lg:px-20 px-4 py-6 bg-white flex flex-col items-center gap-6"
+>
+  <section
+    class="w-full py-16 bg-zinc-800 rounded-[32px] flex flex-col lg:flex-row items-center gap-8 pb-6"
+  >
+    <div class="flex flex-col items-center justify-start lg:p-24 gap-4">
+      <div
+        class="text-[42px] lg:text-[84px] lg:leading-[89px] text-white font-semibold leading-[46px] text-center"
+      >
+        Have an idea? Let’s connect.
+      </div>
+      <div
+        class="leading-loose text-center text-stone-300 lg:text-[28px] font-semibold px-4"
+      >
+        I'm a passionate designer who thrives on the dance between creativity
+        and functionality.
+      </div>
+    </div>
+
+    <div
+      class="w-full lg:px-14 lg:py-24 px-4 bg-zinc-800 border-l border-neutral-600 flex flex-col items-center gap-10"
+    >
+      <div class="h-[207px] flex flex-col items-center gap-4">
+        <img
+          class="w-[123px] h-[123px] rounded-full"
+          src="/default-profile.jpg"
+        />
+        <div class="h-[68px] flex flex-col items-center gap-2">
+          <div
+            class="text-[28px] text-white font-semibold leading-[34px] text-center"
+          >
+            Carl Sagan
+          </div>
+          <div
+            class="text-base text-stone-300 font-normal leading-relaxed text-center"
+          >
+            Product designer based in Florida.
+          </div>
+        </div>
+      </div>
+      <div class="w-full flex flex-col items-center gap-6">
+        <!-- Following sections are similar and repeated -->
+        <div
+          class="w-full h-12 py-4 border-b border-neutral-600 flex justify-between items-center"
+        >
+          <div class="text-white text-base font-semibold">Follow</div>
+        </div>
+        <div
+          class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+        >
+          <img class="w-6 h-6" src="/link.svg" />
+          <div class="text-white text-base font-normal">Twitter</div>
+        </div>
+        <div
+          class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+        >
+          <img class="w-6 h-6" src="/link.svg" />
+          <div class="text-white text-base font-normal">Github</div>
+        </div>
+        <div
+          class="w-full h-12 py-[15px] border-b border-neutral-600 flex items-center gap-2"
+        >
+          <img class="w-6 h-6" src="/link.svg" />
+          <div class="text-white text-base font-normal">Linkedin</div>
+        </div>
+      </div>
+      <div class="h-[94px] flex flex-col justify-center items-center gap-4">
+        <div
+          class="px-7 py-3 bg-white rounded-[39px] flex justify-center items-center gap-2"
+        >
+          <img class="w-6 h-6" src="/calendar.svg" />
+          <div class="text-lg text-zinc-800 font-semibold">Schedule a call</div>
+        </div>
+        <div class="text-center">
+          <span class="text-stone-300 text-sm font-normal">Meetings via</span>
+          <span class="text-stone-300 text-sm font-semibold">Calendly</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <ContactForm />
+</article>

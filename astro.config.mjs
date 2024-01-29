@@ -36,6 +36,7 @@ export default defineConfig({
         "about-header": "storyblok/AboutHeader",
         experience: "storyblok/Experience",
         skills: "storyblok/Skills",
+        "contact-header": "storyblok/ContactHeader",
       },
     }),
     tailwind(),
