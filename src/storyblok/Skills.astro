@@ -1,0 +1,101 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<article
+  {...storyblokEditable(blok)}
+  class="max-w-[1280px] mx-auto py-20 lg:px-0 px-4 pt-14 pb-6 bg-white"
+>
+  <div
+    class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8"
+  >
+    <div
+      class="w-full lg:h-[21rem] lg:w-1/3 flex flex-col items-start justify-start"
+    >
+      <div class="flex items-center gap-2">
+        <img src="/corner-right.svg" class="w-6 h-6" />
+        <div
+          class="text-zinc-800 text-base uppercase font-normal tracking-[0.25rem]"
+        >
+          {blok.title}
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-2/3 flex items-center justify-end">
+      <div
+        class="w-full flex-col justify-start items-start lg:gap-[48px] gap-10 inline-flex"
+      >
+        <div
+          class="w-full text-zinc-800 lg:text-[34px] text-[28px] font-semibold font-['Inter'] leading-10"
+        >
+          {blok.single_quote}
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
+          <!-- Section 1 -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-4">
+              <div class="flex items-start bg-gray-200 gap-2.5">
+                <img class="w-6 h-6" src={blok.skill1_icon.filename} />
+              </div>
+              <div class="flex-grow text-xl text-zinc-800 font-normal">
+                {blok.skill1_title}
+              </div>
+            </div>
+            <div class="text-gray-500 text-base font-normal">
+              {blok.skill1_desc}
+            </div>
+          </div>
+
+          <!-- Section 2 -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-4">
+              <div class="flex items-start bg-gray-200 gap-2.5">
+                <img class="w-6 h-6" src={blok.skill2_icon.filename} />
+              </div>
+              <div class="flex-grow text-xl text-zinc-800 font-normal">
+                {blok.skill2_title}
+              </div>
+            </div>
+            <div class="text-gray-500 text-base font-normal">
+              {blok.skill2_desc}
+            </div>
+          </div>
+
+          <!-- Section 3 -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-4">
+              <div class="flex items-start bg-gray-200 gap-2.5">
+                <img class="w-6 h-6" src={blok.skill3_icon.filename} />
+              </div>
+              <div class="flex-grow text-xl text-zinc-800 font-normal">
+                {blok.skill3_title}
+              </div>
+            </div>
+            <div class="text-gray-500 text-base font-normal">
+              {blok.skill3_desc}
+            </div>
+          </div>
+
+          <!-- Section 4 -->
+          <div class="flex flex-col gap-2">
+            <div class="flex items-center gap-4">
+              <div class="flex items-start bg-gray-200 gap-2.5">
+                <img class="w-6 h-6" src={blok.skill4_icon.filename} />
+              </div>
+              <div class="flex-grow text-xl text-zinc-800 font-normal">
+                {blok.skill4_title}
+              </div>
+            </div>
+            <div class="text-gray-500 text-base font-normal">
+              {blok.skill4_desc}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</article>

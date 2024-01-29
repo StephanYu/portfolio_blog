@@ -1,0 +1,43 @@
+---
+import { storyblokEditable } from "@storyblok/astro";
+
+const { blok } = Astro.props;
+---
+
+<article
+  {...storyblokEditable(blok)}
+  class="max-w-[1280px] mx-auto pt-6 pb-14 lg:py-20 lg:px-0 bg-white px-4"
+>
+  <div
+    class="flex flex-col lg:flex-row items-center justify-between gap-4 lg:gap-8"
+  >
+    <div
+      class="w-full lg:h-64 lg:w-1/3 flex flex-col items-start justify-start"
+    >
+      <div class="flex items-center gap-2">
+        <img src="/corner-right.svg" class="w-6 h-6" />
+        <div
+          class="text-zinc-800 text-base uppercase font-normal tracking-[0.25rem]"
+        >
+          {blok.title}
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full lg:w-2/3 flex items-center justify-end">
+      <table class="w-full border-collapse">
+        <tbody>
+          {
+            blok.work_history.tbody.map((item) => (
+              <tr class="border-b">
+                {item.body.map((body) => (
+                  <td class="text-left p-4">{body.value}</td>
+                ))}
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>
