@@ -9,7 +9,7 @@ const { ...head } = Astro.props;
   <head>
     <BaseHead {...head} />
   </head>
-  <body class="w-full">
+  <body class="w-full" transition:animate="slide">
     <Navbar class="bg-slate-50 border-b border-slate-100" />
     <slot />
   </body>

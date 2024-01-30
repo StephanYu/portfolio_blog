@@ -13,3 +13,60 @@
 .text-style {
   @apply text-dark font-semibold font-['Inter'];
 }
+
+.animate-accordion {
+  @apply overflow-hidden;
+}
+
+.animate-accordion[data-state="open"] {
+  animation: accordionOpen 0.5s ease-in-out;
+}
+
+.animate-accordion[data-state="closed"] {
+  animation: accordionClose 0.5s ease-in-out;
+}
+
+.animate-service-icon[data-state="open"] > div > div > img {
+  animation: serviceIconSpin 0.5s ease-in-out;
+}
+
+.animate-service-icon[data-state="closed"] > div > div > img {
+  border: 2px solid var(--color-primary);
+  animation: serviceIconSpinBack 0.5s ease-in-out;
+}
+
+@keyframes serviceIconSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes serviceIconSpinBack {
+  0% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes accordionOpen {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordionClose {
+  0% {
+    height: var(--radix-accordion-content-height);
+  }
+  100% {
+    height: 0;
+  }
+}

@@ -1,8 +1,5 @@
 ---
-import type AllArticles from "../storyblok/AllArticles.astro";
-
-// import siteConfig from "../data/site-config";
-// import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 
 export type BaseHeadProps = {
   title?: string;
@@ -102,3 +99,4 @@ function formatCanonicalURL(url: string | URL) {
     <meta name="twitter:image:alt" content={resolvedImage?.alt} />
   )
 }
+<ViewTransitions />
