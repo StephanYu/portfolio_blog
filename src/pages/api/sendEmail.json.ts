@@ -1,5 +1,7 @@
 import type { APIRoute } from "astro"
 import { Resend } from "resend";
+import ContactFormEmail from "../../../email/ContactFormEmail.tsx";
+import React from "react";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
@@ -29,8 +31,7 @@ export const POST: APIRoute = async ({ request }) => {
         to: "stephan.yu@gmail.com",
         subject: `Message from ${name}`,
         reply_to: email,
-        html: `<h1>You have a new message</h1><p>${message}</p>`,
-        text: `You have a new message from ${name}: ${message}`,
+        react: React.createElement(ContactFormEmail, { email, message })
       });
     
       if (send.data) {
