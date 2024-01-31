@@ -28,6 +28,7 @@ export const POST: APIRoute = async ({ request }) => {
         from: "Stephan Yu <onboarding@resend.dev>",
         to: "stephan.yu@gmail.com",
         subject: `Message from ${name}`,
+        reply_to: email,
         html: `<h1>You have a new message</h1><p>${message}</p>`,
         text: `You have a new message from ${name}: ${message}`,
       });
